@@ -12,3 +12,4 @@ C:\Users\Alessandro\Desktop\OthelloConsole\Othello\obj\Debug\net8.0\refint\Othel
 C:\Users\Alessandro\Desktop\OthelloConsole\Othello\obj\Debug\net8.0\Othello.pdb
 C:\Users\Alessandro\Desktop\OthelloConsole\Othello\obj\Debug\net8.0\Othello.genruntimeconfig.cache
 C:\Users\Alessandro\Desktop\OthelloConsole\Othello\obj\Debug\net8.0\ref\Othello.dll
+C:\Users\Alessandro\Desktop\OthelloConsole\Othello\obj\Debug\net8.0\Othello.sourcelink.json

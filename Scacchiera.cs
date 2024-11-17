@@ -21,7 +21,6 @@ namespace Othello {
                 }
             }
 
-            // Posizione iniziale delle pedine
             Griglia[3, 3] = 'B';
             Griglia[3, 4] = 'N';
             Griglia[4, 3] = 'N';
@@ -116,7 +115,6 @@ namespace Othello {
             return conteggio;
         }
 
-        // Funzione per verificare se ci sono mosse valide per un dato colore
         public bool CiSonoMosseValide(char colore) {
             for (int riga = 0; riga < Dimensione; riga++) {
                 for (int colonna = 0; colonna < Dimensione; colonna++) {
@@ -128,7 +126,6 @@ namespace Othello {
             return false;
         }
 
-        // Funzione per verificare se entrambi i giocatori non hanno mosse disponibili
         public bool NessunaMossaDisponibile() {
             return !CiSonoMosseValide('N') && !CiSonoMosseValide('B');
         }

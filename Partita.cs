@@ -50,7 +50,7 @@ namespace Othello {
 
                 scacchiera.Visualizza();
 
-                if (!scacchiera.NessunaMossaDisponibile()) {
+                if (scacchiera.NessunaMossaDisponibile()) {
                     Console.WriteLine("Nessuna mossa disponibile per entrambi i giocatori. Partita terminata!");
                     break;
                 }
