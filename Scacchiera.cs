@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Othello {
     public class Scacchiera {
@@ -27,12 +28,28 @@ namespace Othello {
             Griglia[4, 4] = 'B';
         }
 
-        public void Visualizza() {
+        //public void Visualizza() {
+        //    Console.WriteLine("  A B C D E F G H");
+        //    for (int i = 0; i < Dimensione; i++) {
+        //        Console.Write($"{i + 1} ");
+        //        for (int j = 0; j < Dimensione; j++) {
+        //            Console.Write($"{Griglia[i, j]} ");
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
+        public void Visualizza(char coloreGiocatore = 'N') {
             Console.WriteLine("  A B C D E F G H");
-            for (int i = 0; i < Dimensione; i++) {
-                Console.Write($"{i + 1} ");
-                for (int j = 0; j < Dimensione; j++) {
-                    Console.Write($"{Griglia[i, j]} ");
+            for (int riga = 0; riga < Dimensione; riga++) {
+                Console.Write($"{riga + 1} ");
+                for (int colonna = 0; colonna < Dimensione; colonna++) {
+                    // Verifica se la mossa è valida
+                    if (Griglia[riga, colonna] == '-' && MossaValida(riga, colonna, coloreGiocatore)) {
+                        Console.Write("* ");
+                    }
+                    else {
+                        Console.Write($"{Griglia[riga, colonna]} ");
+                    }
                 }
                 Console.WriteLine();
             }
@@ -43,8 +60,8 @@ namespace Othello {
             char coloreAvversario = (coloreGiocatore == 'N') ? 'B' : 'N';
 
             int[][] direzioni = {
-            new[] {-1, 0}, new[] {1, 0}, new[] {0, -1}, new[] {0, 1},
-            new[] {-1, -1}, new[] {-1, 1}, new[] {1, -1}, new[] {1, 1}
+                new[] {-1, 0}, new[] {1, 0}, new[] {0, -1}, new[] {0, 1},
+                new[] {-1, -1}, new[] {-1, 1}, new[] {1, -1}, new[] {1, 1}
         };
 
             foreach (int[] direzione in direzioni) {
@@ -66,6 +83,7 @@ namespace Othello {
                     y += direzione[1];
                 }
             }
+            
             return false;
         }
 
@@ -90,7 +108,7 @@ namespace Othello {
                         celleDaGirare.Add((x, y));
                     }
                     else if (Griglia[x, y] == coloreGiocatore) {
-                        foreach ((int,int) cella in celleDaGirare) {
+                        foreach ((int, int) cella in celleDaGirare) {
                             Griglia[cella.Item1, cella.Item2] = coloreGiocatore;
                         }
                         break;
@@ -130,5 +148,4 @@ namespace Othello {
             return !CiSonoMosseValide('N') && !CiSonoMosseValide('B');
         }
     }
-
 }

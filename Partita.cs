@@ -36,8 +36,14 @@ namespace Othello {
         }
 
         public void Inizia() {
-            while (true) {
+            while (!scacchiera.NessunaMossaDisponibile()) {
                 scacchiera.Visualizza();
+                if (!scacchiera.CiSonoMosseValide(giocatoreCorrente.Colore)) {
+                    giocatoreCorrente = (giocatoreCorrente == giocatore1) ? giocatore2 : giocatore1;
+                    Console.WriteLine("Nessuna mossa disponibile per il giocatore corrente. Passa il Turno!");
+
+                }
+
                 (int riga, int colonna) mossa = giocatoreCorrente.EffettuaMossa(scacchiera);
 
                 if (scacchiera.MossaValida(mossa.Item1, mossa.Item2, giocatoreCorrente.Colore)) {
@@ -47,15 +53,10 @@ namespace Othello {
                 else {
                     Console.WriteLine("Mossa non valida, riprova.");
                 }
-
                 scacchiera.Visualizza();
-
-                if (scacchiera.NessunaMossaDisponibile()) {
-                    Console.WriteLine("Nessuna mossa disponibile per entrambi i giocatori. Partita terminata!");
-                    break;
                 }
-                CalcolaVincitore();
-            }
+            Console.WriteLine("Nessuna mossa disponibile per entrambi i giocatori. Partita terminata!");
+            CalcolaVincitore();
         }
 
 
